@@ -37,7 +37,7 @@ client  = MultiServerMCPClient(
             "transport": "stdio",
             "command": sys.executable,
             "args": [
-                r"F:\AI Travel Planner RAG Systen\custom_weather_mcp_server.py"
+                "/app/custom_weather_mcp_server.py"
             ],
             "env": {
                 "OPENWEATHER_API_KEY": OPENWEATHER_API_KEY
