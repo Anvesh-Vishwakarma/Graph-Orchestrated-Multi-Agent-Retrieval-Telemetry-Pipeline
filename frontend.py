@@ -1027,7 +1027,7 @@ with centre_col:
     st.markdown("---")
 
     user_query = st.text_area(
-        "",
+        "Travel Query",
         value=quick_fill,
         placeholder="✈️  Ask me anything… e.g. Plan a 7-day Japan trip from India under ₹2 Lakhs",
         height=90,
