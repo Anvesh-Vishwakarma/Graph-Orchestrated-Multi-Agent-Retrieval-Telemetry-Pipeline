@@ -21,7 +21,7 @@ client  = MultiServerMCPClient(
 
         "aviationstack": {
                 "transport": "stdio",
-                "command": r"F:\AI Travel Planner RAG Systen\aviationstack-mcp\.venv\Scripts\python.exe",
+                "command": sys.executable,
                 "args": [
                     "-m",
                     "aviationstack_mcp",
