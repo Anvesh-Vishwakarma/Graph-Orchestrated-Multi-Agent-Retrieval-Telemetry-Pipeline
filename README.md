@@ -302,7 +302,7 @@ DATABASE_URL=postgresql://postgres:yourpassword@localhost:5432/langgraph_memory
 
 ## 🗄️ Database Setup
 
-Voyager AI uses **PostgreSQL** to persist conversation memory across sessions (identical to how ChatGPT remembers your threads).
+Voyager AI uses **Neon PostgreSQL** to persist conversation memory across sessions (identical to how ChatGPT remembers your threads).
 
 ### 1. Create the database
 
