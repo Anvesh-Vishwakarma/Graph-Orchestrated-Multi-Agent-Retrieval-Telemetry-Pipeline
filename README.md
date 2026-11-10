@@ -58,7 +58,7 @@ A user describes their trip in natural language. A **Supervisor Agent** analyses
 ## 🎬 Live Demo
 
 ```
-streamlit run frontend.py
+APP LINK - https://graph-orchestrated-multi-agent-retrieval-telemetry-pipeline-qm.streamlit.app/ 
 ```
 
 Open `http://localhost:8501` in your browser.
