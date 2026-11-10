@@ -12,40 +12,80 @@ TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
 AVIATIONSTACK_API_KEY = os.getenv("AVIATIONSTACK_API_KEY")
 OPENWEATHER_API_KEY = os.getenv("OPENWEATHER_API_KEY")
 
-client  = MultiServerMCPClient(
+
+BASE_DIR = Path(__file__).resolve().parent
+WEATHER_SERVER_PATH = str(BASE_DIR / "custom_weather_mcp_server.py")
+
+client = MultiServerMCPClient(
     {
         "tavily": {
             "transport": "streamable_http",
-            "url": f"https://mcp.tavily.com/mcp/?tavilyApiKey=<TAVILY_API_KEY>"
+            "url": f"https://mcp.tavily.com/mcp/?tavilyApiKey={TAVILY_API_KEY}",
         },
-
         "aviationstack": {
-                "transport": "stdio",
-                "command": sys.executable,
-                "args": [
-                    "-m",
-                    "aviationstack_mcp",
-                    "mcp",
-                    "run"
-                ],
-                "env": {
-                    "AVIATIONSTACK_API_KEY": AVIATIONSTACK_API_KEY
-            }
+            "transport": "stdio",
+            "command": sys.executable,
+            "args": [
+                "-m",
+                "aviationstack_mcp",
+                "mcp",
+                "run",
+            ],
+            "env": {
+                **os.environ,
+                "AVIATION_STACK_API_KEY": AVIATIONSTACK_API_KEY or "",
+                "AVIATIONSTACK_API_KEY": AVIATIONSTACK_API_KEY or "",
+            },
         },
-
         "weather": {
             "transport": "stdio",
             "command": sys.executable,
             "args": [
-                "/app/custom_weather_mcp_server.py"
+                WEATHER_SERVER_PATH,  # Dynamically resolves the exact file path
             ],
             "env": {
-                "OPENWEATHER_API_KEY": OPENWEATHER_API_KEY
-            }
-        }
+                **os.environ,
+                "OPENWEATHER_API_KEY": OPENWEATHER_API_KEY or "",
+            },
+        },
     }
-
 )
+
+
+#client  = MultiServerMCPClient(
+#    {
+#        "tavily": {
+#            "transport": "streamable_http",
+#            "url": f"https://mcp.tavily.com/mcp/?tavilyApiKey=<TAVILY_API_KEY>"
+#        },
+#
+#        "aviationstack": {
+#                "transport": "stdio",
+#                "command": sys.executable,
+#                "args": [
+#                    "-m",
+#                    "aviationstack_mcp",
+#                    "mcp",
+#                    "run"
+#                ],
+#                "env": {
+#                    "AVIATIONSTACK_API_KEY": AVIATIONSTACK_API_KEY
+#            }
+#        },
+#
+#        "weather": {
+#            "transport": "stdio",
+#            "command": sys.executable,
+#            "args": [
+#                "/app/custom_weather_mcp_server.py"
+#            ],
+#           "env": {
+#                "OPENWEATHER_API_KEY": OPENWEATHER_API_KEY
+#            }
+#        }
+#    }
+#
+#)
 
 # tools discovery
 #async def main():
