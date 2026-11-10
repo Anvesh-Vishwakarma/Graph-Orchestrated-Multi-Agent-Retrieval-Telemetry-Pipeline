@@ -53,41 +53,6 @@ client = MultiServerMCPClient(
 )
 
 
-#client  = MultiServerMCPClient(
-#    {
-#        "tavily": {
-#            "transport": "streamable_http",
-#            "url": f"https://mcp.tavily.com/mcp/?tavilyApiKey=<TAVILY_API_KEY>"
-#        },
-#
-#        "aviationstack": {
-#                "transport": "stdio",
-#                "command": sys.executable,
-#                "args": [
-#                    "-m",
-#                    "aviationstack_mcp",
-#                    "mcp",
-#                    "run"
-#                ],
-#                "env": {
-#                    "AVIATIONSTACK_API_KEY": AVIATIONSTACK_API_KEY
-#            }
-#        },
-#
-#        "weather": {
-#            "transport": "stdio",
-#            "command": sys.executable,
-#            "args": [
-#                "/app/custom_weather_mcp_server.py"
-#            ],
-#           "env": {
-#                "OPENWEATHER_API_KEY": OPENWEATHER_API_KEY
-#            }
-#        }
-#    }
-#
-#)
-
 # tools discovery
 #async def main():
 #    tools = await client.get_tools()
